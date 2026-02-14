@@ -20,7 +20,7 @@ import archiver from 'archiver';
 import matter from 'gray-matter';
 
 const VERSION = '1.0.0';
-const BASE_URL = 'https://janfeddersen-wq.github.io/llmspecs';
+const BASE_URL = 'https://www.llmspec.dev';
 const PUBLIC_DESC_MAX_CHARS = 500;
 
 const __filename = fileURLToPath(import.meta.url);
