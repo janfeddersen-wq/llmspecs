@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="llmspec">
+  <title>llmspec</title>
+  <rect x="0" y="0" width="64" height="64" fill="#0A0A0A" />
+  <!-- Minimal monogram: a confident, geometric "L" in gold -->
+  <path
+    d="M22 14c0-1.1.9-2 2-2h2c1.1 0 2 .9 2 2v30h18c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H24c-1.1 0-2-.9-2-2V14z"
+    fill="#C4A35A"
+  />
+</svg>

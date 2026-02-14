@@ -1,0 +1,137 @@
+---
+const endpointUrl = 'https://janfeddersen-wq.github.io/llmspecs/skills/skills.json';
+---
+
+<section id="api" class="bg-slate/10">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-20">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start justify-between">
+      <div class="reveal lg:max-w-md">
+        <p class="tracking-luxury text-gold-muted text-xs mb-4 font-sans">
+          FOR MACHINES
+        </p>
+        <h2 class="font-serif text-heading text-cream font-light">
+          Programmatic Access
+        </h2>
+        <p class="font-sans text-cloud/80 text-sm leading-relaxed mt-5">
+          Point your LLM at the skills manifest to discover, filter, and fetch skills programmatically.
+          The JSON endpoint provides descriptions, metadata, and direct download URLs for every skill in
+          the collection.
+        </p>
+      </div>
+
+      <div class="reveal w-full lg:max-w-xl">
+        <div class="bg-midnight border border-ash/30 rounded-lg p-6 relative">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="flex items-center gap-1.5" aria-hidden="true">
+                <span class="h-2.5 w-2.5 rounded-full bg-ash/50"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-ash/40"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-ash/30"></span>
+              </div>
+              <div class="font-mono text-xs text-silver">skills.json</div>
+            </div>
+
+            <button
+              type="button"
+              class="inline-flex items-center gap-2 text-silver hover:text-gold transition-colors duration-300"
+              data-copy-btn
+              aria-label="Copy skills manifest URL"
+            >
+              <span class="sr-only">Copy</span>
+              <svg
+                data-icon="clipboard"
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 5h6a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 5a3 3 0 0 1 6 0"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <svg
+                data-icon="check"
+                class="hidden h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 6 9 17l-5-5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="font-mono text-sm">
+            <div class="text-cream break-all">
+              <span class="text-gold">$</span>
+              <span class="ml-2">{endpointUrl}</span>
+            </div>
+
+            <pre class="mt-5 text-xs leading-relaxed overflow-x-auto"><code>
+<span class="text-gold">{'{'}</span>
+  <span class="text-gold">"version"</span><span class="text-silver">:</span> <span class="text-cream">"1.0.0"</span><span class="text-silver">,</span>
+  <span class="text-gold">"total_skills"</span><span class="text-silver">:</span> <span class="text-cream">41</span><span class="text-silver">,</span>
+  <span class="text-gold">"groups"</span><span class="text-silver">:</span> <span class="text-gold">{'['}</span>
+    <span class="text-gold">{'{'}</span>
+      <span class="text-gold">"slug"</span><span class="text-silver">:</span> <span class="text-cream">"biology"</span><span class="text-silver">,</span>
+      <span class="text-gold">"skill_count"</span><span class="text-silver">:</span> <span class="text-cream">5</span><span class="text-silver">,</span>
+      <span class="text-gold">"skills"</span><span class="text-silver">:</span> <span class="text-gold">{'['}</span>
+        <span class="text-gold">{'{'}</span> <span class="text-gold">"name"</span><span class="text-silver">:</span> <span class="text-cream">"instrument-data-to-allotrope"</span><span class="text-silver">,</span> <span class="text-gold">"download_url"</span><span class="text-silver">:</span> <span class="text-cream">"/skills/downloads/..."</span> <span class="text-gold">{'}'}</span><span class="text-silver">,</span>
+        <span class="text-gold">{'{'}</span> <span class="text-gold">"name"</span><span class="text-silver">:</span> <span class="text-cream">"data-context-extractor"</span><span class="text-silver">,</span> <span class="text-gold">"download_url"</span><span class="text-silver">:</span> <span class="text-cream">"/skills/downloads/..."</span> <span class="text-gold">{'}'}</span>
+      <span class="text-gold">{']'}</span>
+    <span class="text-gold">{'}'}</span>
+  <span class="text-gold">{']'}</span>
+<span class="text-gold">{'}'}</span>
+            </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const endpointUrl = 'https://janfeddersen-wq.github.io/llmspecs/skills/skills.json';
+
+    const btn = document.querySelector('[data-copy-btn]');
+    if (btn) {
+      const clipboardIcon = btn.querySelector('[data-icon="clipboard"]');
+      const checkIcon = btn.querySelector('[data-icon="check"]');
+
+      const setState = (state) => {
+        if (!clipboardIcon || !checkIcon) return;
+        const copied = state === 'copied';
+        clipboardIcon.classList.toggle('hidden', copied);
+        checkIcon.classList.toggle('hidden', !copied);
+      };
+
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(endpointUrl);
+          setState('copied');
+          window.setTimeout(() => setState('idle'), 1200);
+        } catch {
+          // If clipboard is blocked, we fail silently. Were classy.
+        }
+      });
+    }
+  </script>
+</section>

@@ -1,0 +1,123 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  group: string;
+  downloadUrl: string;
+  zipSizeBytes: number;
+  fileCount: number;
+  contents: {
+    has_scripts: boolean;
+    has_references: boolean;
+    has_license: boolean;
+  };
+}
+
+const { name, description, group, downloadUrl, zipSizeBytes, fileCount, contents } = Astro.props;
+
+function toTitleCaseHyphenated(value: string): string {
+  return value
+    .split('-')
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
+function formatBytes(bytes: number): string {
+  if (!Number.isFinite(bytes) || bytes <= 0) return '0 B';
+  const units = ['B', 'KB', 'MB', 'GB'];
+  let size = bytes;
+  let u = 0;
+
+  while (size >= 1024 && u < units.length - 1) {
+    size /= 1024;
+    u += 1;
+  }
+
+  return `${size.toFixed(u === 0 ? 0 : 1)} ${units[u]}`;
+}
+
+const displayName = toTitleCaseHyphenated(name);
+const zipSizeLabel = formatBytes(zipSizeBytes);
+const fileCountLabel = `${fileCount} ${fileCount === 1 ? 'file' : 'files'}`;
+---
+
+<article
+  class="rounded-lg border border-ash/30 bg-charcoal p-5 md:p-6 card-glow transition-all duration-[400ms] ease-[ease] hover:border-gold/30"
+  data-skill-group={group}
+>
+  <h3 class="font-serif text-xl text-cream font-medium">
+    {displayName}
+  </h3>
+
+  <p class="mt-3 font-sans text-sm text-cloud/80 leading-relaxed line-clamp-3">
+    {description}
+  </p>
+
+  <div class="mt-4 flex flex-wrap gap-2">
+    <span class="bg-slate/50 text-silver text-xs px-2 py-1 rounded-full">
+      {fileCountLabel}
+    </span>
+    <span class="bg-slate/50 text-silver text-xs px-2 py-1 rounded-full">
+      {zipSizeLabel}
+    </span>
+
+    {contents?.has_scripts && (
+      <span class="bg-gold-muted/10 text-gold-muted text-xs px-2 py-1 rounded-full border border-gold-muted/20">
+        Scripts
+      </span>
+    )}
+    {contents?.has_references && (
+      <span class="bg-gold-muted/10 text-gold-muted text-xs px-2 py-1 rounded-full border border-gold-muted/20">
+        References
+      </span>
+    )}
+    {contents?.has_license && (
+      <span class="bg-gold-muted/10 text-gold-muted text-xs px-2 py-1 rounded-full border border-gold-muted/20">
+        Licensed
+      </span>
+    )}
+  </div>
+
+  <div class="mt-5">
+    <a
+      href={downloadUrl}
+      download
+      class="group inline-flex items-center gap-2 text-gold text-sm font-sans tracking-widest-plus uppercase border-b border-transparent hover:border-gold-light hover:text-gold-light transition-all duration-300"
+    >
+      Download
+      <span class="inline-flex transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true">
+        <svg
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 4v11"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M7 12l5 5 5-5"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </span>
+    </a>
+  </div>
+</article>
+
+<style>
+  /* Tailwind line-clamp plugin? Nah. We can do it ourselves like responsible adults. */
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+</style>

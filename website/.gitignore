@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+public/skills/downloads/
+public/skills/skills.json
+public/skills/schema.json
+src/data/skills-catalog.json

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh repo view:*)",
+      "Bash(curl:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:models.dev)",
+      "WebSearch",
+      "Bash(gh api:*)",
+      "Bash(python3:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(npx:*)",
+      "Bash(pnpm --version:*)",
+      "Bash(bun:*)",
+      "Bash(git init:*)"
+    ]
+  }
+}

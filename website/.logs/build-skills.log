@@ -1,0 +1,137 @@
+
+Building skills artifacts from: /Users/janfeddersen/sources/llmspec/skills
+Output downloads dir: /Users/janfeddersen/sources/llmspec/website/public/skills/downloads
+
+📦 Packaging instrument-data-to-allotrope...
+   ✅ instrument-data-to-allotrope.zip  43.5 KB  (11 files)
+
+📦 Packaging nextflow-development...
+   ✅ nextflow-development.zip  64.0 KB  (22 files)
+
+📦 Packaging scientific-problem-selection...
+   ✅ scientific-problem-selection.zip  47.6 KB  (11 files)
+
+📦 Packaging scvi-tools...
+   ✅ scvi-tools.zip  69.6 KB  (22 files)
+
+📦 Packaging single-cell-rna-qc...
+   ✅ single-cell-rna-qc.zip  17.7 KB  (6 files)
+
+📦 Packaging data-context-extractor...
+   ✅ data-context-extractor.zip  13.4 KB  (6 files)
+
+📦 Packaging data-exploration...
+   ✅ data-exploration.zip  3.7 KB  (1 files)
+
+📦 Packaging data-validation...
+   ✅ data-validation.zip  4.3 KB  (1 files)
+
+📦 Packaging data-visualization...
+   ✅ data-visualization.zip  4.5 KB  (1 files)
+
+📦 Packaging interactive-dashboard-builder...
+   ✅ interactive-dashboard-builder.zip  5.8 KB  (1 files)
+
+📦 Packaging sql-queries...
+   ✅ sql-queries.zip  4.0 KB  (1 files)
+
+📦 Packaging statistical-analysis...
+   ✅ statistical-analysis.zip  4.6 KB  (1 files)
+
+📦 Packaging audit-support...
+   ✅ audit-support.zip  6.1 KB  (1 files)
+
+📦 Packaging close-management...
+   ✅ close-management.zip  3.8 KB  (1 files)
+
+📦 Packaging financial-statements...
+   ✅ financial-statements.zip  3.9 KB  (1 files)
+
+📦 Packaging journal-entry-prep...
+   ✅ journal-entry-prep.zip  3.2 KB  (1 files)
+
+📦 Packaging reconciliation...
+   ✅ reconciliation.zip  3.2 KB  (1 files)
+
+📦 Packaging variance-analysis...
+   ✅ variance-analysis.zip  4.5 KB  (1 files)
+
+📦 Packaging canned-responses...
+   ✅ canned-responses.zip  4.5 KB  (1 files)
+
+📦 Packaging compliance...
+   ✅ compliance.zip  4.9 KB  (1 files)
+
+📦 Packaging contract-review...
+   ✅ contract-review.zip  4.2 KB  (1 files)
+
+📦 Packaging legal-risk-assessment...
+   ✅ legal-risk-assessment.zip  4.8 KB  (1 files)
+
+📦 Packaging meeting-briefing...
+   ✅ meeting-briefing.zip  3.6 KB  (1 files)
+
+📦 Packaging nda-triage...
+   ✅ nda-triage.zip  4.2 KB  (1 files)
+
+📦 Packaging docx...
+   ✅ docx.zip  168.0 KB  (58 files)
+
+📦 Packaging frontend-design...
+   ✅ frontend-design.zip  2.2 KB  (1 files)
+
+📦 Packaging pdf...
+   ✅ pdf.zip  20.0 KB  (10 files)
+
+📦 Packaging pptx...
+   ✅ pptx.zip  206.3 KB  (56 files)
+
+📦 Packaging xlsx...
+   ✅ xlsx.zip  7.4 KB  (2 files)
+
+📦 Packaging competitive-analysis...
+   ✅ competitive-analysis.zip  4.5 KB  (1 files)
+
+📦 Packaging feature-spec...
+   ✅ feature-spec.zip  3.9 KB  (1 files)
+
+📦 Packaging metrics-tracking...
+   ✅ metrics-tracking.zip  5.5 KB  (1 files)
+
+📦 Packaging roadmap-management...
+   ✅ roadmap-management.zip  3.8 KB  (1 files)
+
+📦 Packaging stakeholder-comms...
+   ✅ stakeholder-comms.zip  4.6 KB  (1 files)
+
+📦 Packaging user-research-synthesis...
+   ✅ user-research-synthesis.zip  4.7 KB  (1 files)
+
+📦 Packaging account-research...
+   ✅ account-research.zip  3.1 KB  (1 files)
+
+📦 Packaging call-prep...
+   ✅ call-prep.zip  3.3 KB  (1 files)
+
+📦 Packaging competitive-intelligence...
+   ✅ competitive-intelligence.zip  4.8 KB  (1 files)
+
+📦 Packaging create-an-asset...
+   ✅ create-an-asset.zip  13.5 KB  (3 files)
+
+📦 Packaging daily-briefing...
+   ✅ daily-briefing.zip  2.7 KB  (1 files)
+
+📦 Packaging draft-outreach...
+   ✅ draft-outreach.zip  4.1 KB  (1 files)
+
+--- Summary ---
+Groups:        7
+Skills:        41
+Packaged:      41
+ZIP total:     796.3 KB
+Warnings:      0
+Manifest:      public/skills/skills.json
+Catalog:       src/data/skills-catalog.json
+Schema:        public/skills/schema.json
+

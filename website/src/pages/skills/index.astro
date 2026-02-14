@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import SkillGroup from '../../components/SkillGroup.astro';
+import JsonEndpoint from '../../components/JsonEndpoint.astro';
+import Footer from '../../components/Footer.astro';
+
+import catalog from '../../data/skills-catalog.json';
+
+function titleCase(value: string): string {
+  return value
+    .split(/[-\s]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+---
+
+<Layout title="Skills — LLMSPEC">
+  <Nav />
+
+  <header class="max-w-5xl mx-auto px-6 md:px-8 pt-40 pb-24 text-center">
+    <p class="tracking-luxury text-gold-muted text-xs mb-4 font-sans reveal">THE COLLECTION</p>
+
+    <h1 class="font-serif text-display-sm md:text-display text-cream font-light reveal">
+      Skills
+    </h1>
+
+    <p class="font-sans text-cloud/70 text-base mt-6 max-w-2xl mx-auto reveal">
+      {catalog.total_skills} meticulously crafted skills across {catalog.groups.length} disciplines.
+      Download as ZIPs, deploy instantly.
+    </p>
+
+    <div class="gold-rule max-w-xs mx-auto mt-10 reveal"></div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 md:px-8 pb-24">
+    <nav class="flex flex-wrap justify-center gap-3 mb-16 reveal" aria-label="Skill groups">
+      {catalog.groups.map((group) => (
+        <a
+          href={`#${group.slug}`}
+          class="px-4 py-2 text-sm font-sans text-silver hover:text-gold border border-ash/30 hover:border-gold/40 rounded-full transition-all"
+        >
+          {titleCase(group.name)}
+        </a>
+      ))}
+    </nav>
+
+    {catalog.groups.map((group) => (
+      <SkillGroup
+        name={group.name}
+        slug={group.slug}
+        skillCount={group.skill_count}
+        skills={group.skills}
+      />
+    ))}
+  </main>
+
+  <JsonEndpoint />
+
+  <Footer />
+</Layout>

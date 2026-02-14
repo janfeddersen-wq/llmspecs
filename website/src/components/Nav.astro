@@ -1,0 +1,60 @@
+---
+const pathname = Astro.url?.pathname ?? '/';
+const isSkills = pathname === '/skills' || pathname.startsWith('/skills/');
+---
+
+<nav
+  id="site-nav"
+  class="fixed inset-x-0 top-0 z-50 h-[60px] md:h-[72px] px-5 md:px-8 bg-transparent transition-colors duration-300 relative"
+  aria-label="Primary"
+>
+  <div class="relative mx-auto flex h-full w-full max-w-6xl items-center justify-between">
+    <a
+      href="/"
+      class="font-serif font-medium tracking-ultra uppercase text-gold text-sm md:text-base leading-none"
+    >
+      LLMSPEC
+    </a>
+
+    <div class="flex items-center gap-6 md:gap-10">
+      <a
+        href="/skills/"
+        class:list={[
+          'relative font-sans text-[11px] md:text-xs tracking-widest-plus uppercase text-cream transition-colors duration-300 hover:text-gold',
+          'after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-px after:bg-gold after:transition-opacity after:duration-300',
+          isSkills ? 'after:opacity-100' : 'after:opacity-0 hover:after:opacity-100',
+        ]}
+      >
+        Skills
+      </a>
+
+      <span class="inline-flex items-center font-sans text-[11px] md:text-xs tracking-widest-plus uppercase text-cream opacity-40 cursor-default select-none">
+        Definitions
+        <span class="ml-2 rounded-full border border-gold-muted/30 px-2 py-0.5 text-[10px] tracking-widest-plus uppercase text-gold-muted">
+          Soon
+        </span>
+      </span>
+    </div>
+  </div>
+
+  <div class="gold-rule pointer-events-none absolute bottom-0 left-0 w-full" />
+
+  <script>
+    const nav = document.getElementById('site-nav');
+    if (nav) {
+      const setScrolled = () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+      };
+      setScrolled();
+      window.addEventListener('scroll', setScrolled, { passive: true });
+    }
+  </script>
+</nav>
+
+<style is:global>
+  #site-nav.scrolled {
+    background-color: rgba(26, 26, 26, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+</style>

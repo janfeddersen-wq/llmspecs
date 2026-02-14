@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import SkillGroup from '../components/SkillGroup.astro';
+import JsonEndpoint from '../components/JsonEndpoint.astro';
+import Footer from '../components/Footer.astro';
+
+import catalog from '../data/skills-catalog.json';
+---
+
+<Layout title="LLMSPEC — Curated LLM Skills">
+  <Nav />
+  <Hero />
+
+  <!-- Skills Preview Section -->
+  <section class="max-w-7xl mx-auto px-6 md:px-8 py-24">
+    <!-- Section intro -->
+    <div class="text-center mb-20 reveal">
+      <p class="tracking-luxury text-gold-muted text-xs mb-4 font-sans">THE COLLECTION</p>
+      <h2 class="font-serif text-display-sm md:text-display text-cream font-light">Skills</h2>
+      <p class="font-sans text-cloud/70 text-base mt-6 max-w-2xl mx-auto">
+        {catalog.total_skills} meticulously crafted skills across {catalog.groups.length} disciplines.
+        Each skill is a self-contained package — ready to download, ready to deploy.
+      </p>
+      <div class="gold-rule max-w-xs mx-auto mt-8"></div>
+    </div>
+
+    <!-- Show ALL groups with all their skills -->
+    {catalog.groups.map((group) => (
+      <SkillGroup
+        name={group.name}
+        slug={group.slug}
+        skillCount={group.skill_count}
+        skills={group.skills}
+      />
+    ))}
+  </section>
+
+  <JsonEndpoint />
+
+  <!-- Definitions Teaser -->
+  <section class="max-w-4xl mx-auto px-6 md:px-8 py-24 text-center reveal">
+    <p class="tracking-luxury text-gold-muted text-xs mb-4 font-sans">COMING SOON</p>
+    <h2 class="font-serif text-heading text-cream font-light">Definitions</h2>
+    <p class="font-sans text-cloud/50 text-sm mt-4 max-w-lg mx-auto">
+      A curated lexicon of LLM terminology — precise, authoritative, machine-readable. Currently being
+      assembled.
+    </p>
+    <div class="gold-rule max-w-[60px] mx-auto mt-8"></div>
+  </section>
+
+  <Footer />
+</Layout>
