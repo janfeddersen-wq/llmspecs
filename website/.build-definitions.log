@@ -1,0 +1,8 @@
+
+Building definitions from: /Users/janfeddersen/sources/llmspec/models.dev/providers
+Providers: 89
+Models:    2347
+Manifest:  public/definitions/definitions.json
+Catalog:   src/data/definitions-catalog.json
+Schema:    public/definitions/schema.json
+

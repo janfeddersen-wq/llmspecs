@@ -1,0 +1,139 @@
+---
+const endpointUrl = 'https://www.llmspec.dev/definitions/definitions.json';
+---
+
+<section id="api" class="bg-slate/10">
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-20">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start justify-between">
+      <div class="reveal lg:max-w-md">
+        <p class="tracking-luxury text-gold-muted text-xs mb-4 font-sans">
+          FOR MACHINES
+        </p>
+        <h2 class="font-serif text-heading text-cream font-light">
+          Programmatic Access
+        </h2>
+        <p class="font-sans text-cloud/80 text-sm leading-relaxed mt-5">
+          Point your LLM at the definitions manifest to discover models, capabilities, pricing, and
+          context limits programmatically. The JSON endpoint provides full metadata for every model
+          from every provider.
+        </p>
+      </div>
+
+      <div class="reveal w-full lg:max-w-xl">
+        <div class="bg-midnight border border-ash/30 rounded-lg p-6 relative">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <div class="flex items-center gap-1.5" aria-hidden="true">
+                <span class="h-2.5 w-2.5 rounded-full bg-ash/50"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-ash/40"></span>
+                <span class="h-2.5 w-2.5 rounded-full bg-ash/30"></span>
+              </div>
+              <div class="font-mono text-xs text-silver">definitions.json</div>
+            </div>
+
+            <button
+              type="button"
+              class="inline-flex items-center gap-2 text-silver hover:text-gold transition-colors duration-300"
+              data-definitions-copy-btn
+              aria-label="Copy definitions manifest URL"
+            >
+              <span class="sr-only">Copy</span>
+              <svg
+                data-icon="clipboard"
+                class="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 5h6a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 5a3 3 0 0 1 6 0"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <svg
+                data-icon="check"
+                class="hidden h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M20 6 9 17l-5-5"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <div class="font-mono text-sm">
+            <div class="text-cream break-all">
+              <span class="text-gold">$</span>
+              <span class="ml-2">{endpointUrl}</span>
+            </div>
+
+            <pre class="mt-5 text-xs leading-relaxed overflow-x-auto"><code>
+<span class="text-gold">{'{'}</span>
+  <span class="text-gold">"version"</span><span class="text-silver">:</span> <span class="text-cream">"1.0.0"</span><span class="text-silver">,</span>
+  <span class="text-gold">"total_providers"</span><span class="text-silver">:</span> <span class="text-cream">89</span><span class="text-silver">,</span>
+  <span class="text-gold">"total_models"</span><span class="text-silver">:</span> <span class="text-cream">2347</span><span class="text-silver">,</span>
+  <span class="text-gold">"providers"</span><span class="text-silver">:</span> <span class="text-gold">{'['}</span>
+    <span class="text-gold">{'{'}</span>
+      <span class="text-gold">"id"</span><span class="text-silver">:</span> <span class="text-cream">"openai"</span><span class="text-silver">,</span>
+      <span class="text-gold">"npm"</span><span class="text-silver">:</span> <span class="text-cream">"@ai-sdk/openai"</span><span class="text-silver">,</span>
+      <span class="text-gold">"model_count"</span><span class="text-silver">:</span> <span class="text-cream">42</span><span class="text-silver">,</span>
+      <span class="text-gold">"models"</span><span class="text-silver">:</span> <span class="text-gold">{'['}</span>
+        <span class="text-gold">{'{'}</span> <span class="text-gold">"id"</span><span class="text-silver">:</span> <span class="text-cream">"gpt-4o"</span><span class="text-silver">,</span> <span class="text-gold">"limit"</span><span class="text-silver">:</span> <span class="text-gold">{'{'}</span><span class="text-gold">"context"</span><span class="text-silver">:</span> <span class="text-cream">128000</span><span class="text-silver">,</span> <span class="text-gold">"output"</span><span class="text-silver">:</span> <span class="text-cream">16384</span><span class="text-gold">{'}'}</span> <span class="text-gold">{'}'}</span><span class="text-silver">,</span>
+        <span class="text-gold">{'{'}</span> <span class="text-gold">"id"</span><span class="text-silver">:</span> <span class="text-cream">"o4-mini"</span><span class="text-silver">,</span> <span class="text-gold">"reasoning"</span><span class="text-silver">:</span> <span class="text-cream">true</span> <span class="text-gold">{'}'}</span>
+      <span class="text-gold">{']'}</span>
+    <span class="text-gold">{'}'}</span>
+  <span class="text-gold">{']'}</span>
+<span class="text-gold">{'}'}</span>
+            </code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const endpointUrl = 'https://www.llmspec.dev/definitions/definitions.json';
+
+    const btn = document.querySelector('[data-definitions-copy-btn]');
+    if (btn) {
+      const clipboardIcon = btn.querySelector('[data-icon="clipboard"]');
+      const checkIcon = btn.querySelector('[data-icon="check"]');
+
+      const setState = (state) => {
+        if (!clipboardIcon || !checkIcon) return;
+        const copied = state === 'copied';
+        clipboardIcon.classList.toggle('hidden', copied);
+        checkIcon.classList.toggle('hidden', !copied);
+      };
+
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(endpointUrl);
+          setState('copied');
+          window.setTimeout(() => setState('idle'), 1200);
+        } catch {
+          // If clipboard is blocked, we fail silently. Were classy.
+        }
+      });
+    }
+  </script>
+</section>

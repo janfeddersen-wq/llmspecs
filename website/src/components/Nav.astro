@@ -1,6 +1,14 @@
 ---
 const pathname = Astro.url?.pathname ?? '/';
 const isSkills = pathname === '/skills' || pathname.startsWith('/skills/');
+const isDefinitions = pathname === '/definitions' || pathname.startsWith('/definitions/');
+
+const manifestLabel = isSkills ? 'skills.json' : isDefinitions ? 'definitions.json' : undefined;
+const manifestUrl = isSkills
+  ? 'https://www.llmspec.dev/skills/skills.json'
+  : isDefinitions
+    ? 'https://www.llmspec.dev/definitions/definitions.json'
+    : undefined;
 ---
 
 <nav
@@ -28,45 +36,38 @@ const isSkills = pathname === '/skills' || pathname.startsWith('/skills/');
         Skills
       </a>
 
-      {
-        isSkills && (
-          <div class="hidden md:flex items-center gap-1.5 border border-ash/30 rounded-full px-3 py-1">
-            <span class="font-mono text-[10px] md:text-[11px] text-silver/70">skills.json</span>
-            <button
-              type="button"
-              data-nav-copy
-              class="text-silver/50 hover:text-gold transition-colors"
-              aria-label="Copy skills.json URL"
-            >
-              <svg
-                data-icon="clipboard"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="h-3.5 w-3.5"
-              >
-                <path
-                  d="M16 4h-1.18C14.4 2.84 13.3 2 12 2s-2.4.84-2.82 2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-4-1a1 1 0 0 1 1 1h-2a1 1 0 0 1 1-1zm4 17H8V6h1.5v2h5V6H16v14z"
-                />
-              </svg>
-              <svg
-                data-icon="check"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="h-3.5 w-3.5 hidden"
-              >
-                <path d="M9 16.2l-3.5-3.5L4 14.2l5 5 12-12-1.5-1.5L9 16.2z" />
-              </svg>
-            </button>
-          </div>
-        )
-      }
-
-      <span class="inline-flex items-center font-sans text-[11px] md:text-xs tracking-widest-plus uppercase text-cream opacity-40 cursor-default select-none">
+      <a
+        href="/definitions/"
+        class:list={[
+          'relative font-sans text-[11px] md:text-xs tracking-widest-plus uppercase text-cream transition-colors duration-300 hover:text-gold',
+          'after:absolute after:-bottom-2 after:left-0 after:right-0 after:h-px after:bg-gold after:transition-opacity after:duration-300',
+          isDefinitions ? 'after:opacity-100' : 'after:opacity-0 hover:after:opacity-100',
+        ]}
+      >
         Definitions
-        <span class="ml-2 rounded-full border border-gold-muted/30 px-2 py-0.5 text-[10px] tracking-widest-plus uppercase text-gold-muted">
-          Soon
-        </span>
-      </span>
+      </a>
+
+      {manifestLabel && manifestUrl && (
+        <div class="hidden md:flex items-center gap-1.5 border border-ash/30 rounded-full px-3 py-1">
+          <span class="font-mono text-[10px] md:text-[11px] text-silver/70">{manifestLabel}</span>
+          <button
+            type="button"
+            data-nav-copy
+            data-copy-url={manifestUrl}
+            class="text-silver/50 hover:text-gold transition-colors"
+            aria-label={`Copy ${manifestLabel} URL`}
+          >
+            <svg data-icon="clipboard" viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5">
+              <path
+                d="M16 4h-1.18C14.4 2.84 13.3 2 12 2s-2.4.84-2.82 2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-4-1a1 1 0 0 1 1 1h-2a1 1 0 0 1 1-1zm4 17H8V6h1.5v2h5V6H16v14z"
+              />
+            </svg>
+            <svg data-icon="check" viewBox="0 0 24 24" fill="currentColor" class="h-3.5 w-3.5 hidden">
+              <path d="M9 16.2l-3.5-3.5L4 14.2l5 5 12-12-1.5-1.5L9 16.2z" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       <a
         href="https://github.com/janfeddersen-wq/llmspecs"
@@ -101,9 +102,13 @@ const isSkills = pathname === '/skills' || pathname.startsWith('/skills/');
       const clipIcon = copyBtn.querySelector('[data-icon="clipboard"]');
       const checkIcon = copyBtn.querySelector('[data-icon="check"]');
 
+      const copyUrl = copyBtn.getAttribute('data-copy-url');
+
       copyBtn.addEventListener('click', async () => {
+        if (!copyUrl) return;
+
         try {
-          await navigator.clipboard.writeText('https://www.llmspec.dev/skills/skills.json');
+          await navigator.clipboard.writeText(copyUrl);
           if (clipIcon && checkIcon) {
             clipIcon.classList.add('hidden');
             checkIcon.classList.remove('hidden');
@@ -112,7 +117,9 @@ const isSkills = pathname === '/skills' || pathname.startsWith('/skills/');
               checkIcon.classList.add('hidden');
             }, 1200);
           }
-        } catch {}
+        } catch {
+          // Clipboard might be blocked. We fail silently because we're not monsters.
+        }
       });
     }
   </script>

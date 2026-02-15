@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.llmspec.dev/definitions/schema.json",
+  "title": "LLMSpec Model Definitions Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "generated_at",
+    "base_url",
+    "total_providers",
+    "total_models",
+    "providers"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "base_url": {
+      "type": "string"
+    },
+    "total_providers": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "total_models": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/provider"
+      }
+    }
+  },
+  "$defs": {
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "npm",
+        "doc",
+        "has_logo",
+        "model_count",
+        "models"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "npm": {
+          "type": "string"
+        },
+        "doc": {
+          "type": "string"
+        },
+        "api": {
+          "type": "string"
+        },
+        "has_logo": {
+          "type": "boolean"
+        },
+        "model_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/model"
+          }
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "provider",
+        "release_date",
+        "last_updated",
+        "attachment",
+        "reasoning",
+        "tool_call",
+        "open_weights",
+        "modalities",
+        "limit"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "family": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "release_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "last_updated": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attachment": {
+          "type": "boolean"
+        },
+        "reasoning": {
+          "type": "boolean"
+        },
+        "tool_call": {
+          "type": "boolean"
+        },
+        "temperature": {
+          "type": "boolean"
+        },
+        "structured_output": {
+          "type": "boolean"
+        },
+        "knowledge": {
+          "type": "string"
+        },
+        "open_weights": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "alpha",
+            "beta",
+            "deprecated"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "modalities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "input",
+            "output"
+          ],
+          "properties": {
+            "input": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "output": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "limit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "context",
+            "output"
+          ],
+          "properties": {
+            "context": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "output": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "input": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "cost": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "input": {
+              "type": "number",
+              "minimum": 0
+            },
+            "output": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    }
+  }
+}
